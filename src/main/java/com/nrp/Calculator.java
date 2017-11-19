@@ -67,8 +67,13 @@ public class Calculator {
     
     private void clearStack(){
 	//stack.removeAllElements(); 
-	while(!stack.isEmpty())
+	int i = 0; 
+	while(!stack.isEmpty()){
+	    i++;
 	    undoStack.push(stack.pop());
+	}
+	//we need to know how many items were removed by this clear operation
+	undoStack.push(Double.valueOf(i));
     }
     
     private void sqrt() {
@@ -115,7 +120,9 @@ public class Calculator {
 	    stack.pop();
 	    stack.push(undoStack.pop());
 	} else if (lastOperator.equalsIgnoreCase(CLEAR)) {
-	    
+	    double d = undoStack.pop();
+	    for (int i = 0; i < d; i++)
+		stack.push(undoStack.pop());
 	} else {
 	    stack.pop();
 	    stack.push(undoStack.pop());
