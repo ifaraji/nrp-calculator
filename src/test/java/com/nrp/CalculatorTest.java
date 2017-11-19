@@ -15,4 +15,9 @@ public class CalculatorTest {
     public void whenNonNumberIsUsedThenThrowException(){
 	calc.readInput("a");
     }
+    
+    @Test(expected = RuntimeException.class)
+    public void whenNonNumbersAreUsedThenThrowException(){
+	calc.readInput("1 2 a b");
+    }
 }
