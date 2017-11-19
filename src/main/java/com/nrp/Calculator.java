@@ -20,6 +20,7 @@ public class Calculator {
     private final String MUL = "*";
     private final String DIV = "/";
     private final String UNDO = "undo";
+    private final String NUM = "NUMBER"; //control key for undoing added numbers
     
     public Calculator(){
 	operators = new HashMap<String, String>();
@@ -38,6 +39,7 @@ public class Calculator {
 	    if (!operators.containsKey(token)){
 		Double number = Double.parseDouble(token);
 		stack.push(number);
+		opStack.push(NUM);
 	    } else {
 		//tracking operators for undoing purpose
 		//no need to track undo itself
@@ -138,7 +140,9 @@ public class Calculator {
 	if (opStack.size() == 0) //nothing to undo
 	    return;
 	String lastOperator = opStack.pop();
-	if (lastOperator.equalsIgnoreCase(SQRT)){
+	if (lastOperator.equalsIgnoreCase(NUM))
+	    stack.pop();
+	else if (lastOperator.equalsIgnoreCase(SQRT)){
 	    stack.pop();
 	    stack.push(undoStack.pop());
 	} else if (lastOperator.equalsIgnoreCase(CLEAR)) {
