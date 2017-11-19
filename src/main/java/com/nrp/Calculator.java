@@ -8,6 +8,7 @@ import java.util.Stack;
 public class Calculator {
     private HashMap<String, String> operators;
     private Stack<Double> stack;
+    private Stack<Double> undoStack;
     
     private final String CLEAR = "clear";
     private final String SQRT = "sqrt";
@@ -21,6 +22,7 @@ public class Calculator {
 	for (String op : Arrays.asList("+", "-", "*", "/", "sqrt", "undo", "clear"))
 	    operators.put(op, op);
 	stack = new Stack<Double>();
+	undoStack = new Stack<Double>();
     }
 	
     public void calculate(String input){
@@ -53,36 +55,47 @@ public class Calculator {
     }
     
     private void clearStack(){
-	stack.removeAllElements();
+	//stack.removeAllElements(); 
+	while(!stack.isEmpty())
+	    undoStack.push(stack.pop());
     }
     
     private void sqrt() {
 	Double d = stack.pop();
 	stack.push(Math.sqrt(d));
+	undoStack.push(d);
     }
     
     private void add(){
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
-	stack.push(d2 + d1);	
+	stack.push(d2 + d1);
+	undoStack.push(d2);
+	undoStack.push(d1);
     }
     
     private void subtract(){
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
 	stack.push(d2 - d1);	
+	undoStack.push(d2);
+	undoStack.push(d1);
     }
     
     private void mul(){
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
 	stack.push(d2 * d1);	
+	undoStack.push(d2);
+	undoStack.push(d1);
     }
     
     private void div(){
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
 	stack.push(d2 / d1);	
+	undoStack.push(d2);
+	undoStack.push(d1);
     }
     
     @Override
