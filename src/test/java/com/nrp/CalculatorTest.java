@@ -3,6 +3,8 @@ package com.nrp;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.junit.Assert;
+
 public class CalculatorTest {
     Calculator calc;
     
@@ -24,5 +26,11 @@ public class CalculatorTest {
     @Test
     public void whenValidOperatorsAreUsedThrowNoException(){
 	calc.readInput("+ - * / sqrt undo clear");
+	Assert.assertTrue(true);
+    }
+    
+    @Test
+    public void numbersAreStoredInStack(){
+	calc.readInput("1 2 3");
     }
 }
