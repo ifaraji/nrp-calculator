@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Scanner;
 import java.util.Stack;
 
 public class Calculator {
@@ -32,6 +33,7 @@ public class Calculator {
     public void calculate(String input){
 	String[] tokens = input.split(" ");
 	int pos = 1; //keeps track of the position of items in the list
+	try {
 	for (String token : tokens) {
 	    if (!operators.containsKey(token)){
 		Double number = Double.parseDouble(token);
@@ -67,6 +69,10 @@ public class Calculator {
 	    pos += token.length();
 	    pos++; //+1 to account for the spaces between tokens in the input string
 	}
+	} catch (RuntimeException e) {
+	    System.out.println(e.getMessage());
+	}
+	System.out.println("Stack: " + this);
     }
     
     private void clearStack(){
@@ -163,5 +169,19 @@ public class Calculator {
 	    builder.append(" ");
 	}
 	return builder.toString().trim();
+    }
+    
+    public static void main(String[] args) {
+	Scanner sc = new Scanner(System.in);
+	Calculator calculator = new Calculator();
+	while (true) {
+	    System.out.print("Enter command (type exit to end): ");
+	    String cmd = sc.nextLine();
+	    if (cmd.equalsIgnoreCase("exit"))
+		break;
+	    else
+		calculator.calculate(cmd);
+	}
+	sc.close();
     }
 }

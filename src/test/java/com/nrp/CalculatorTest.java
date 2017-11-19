@@ -13,15 +13,19 @@ public class CalculatorTest {
 	calc = new Calculator();
     }
     
+    /* test is not necessary anymore as error message is directed to the screen
     @Test(expected = RuntimeException.class)
     public void whenNonNumberIsUsedThenThrowException(){
 	calc.calculate("a");
     }
+    */
     
+    /* test is not necessary anymore as error message is directed to the screen
     @Test(expected = RuntimeException.class)
     public void whenNonNumbersAreUsedThenThrowException(){
 	calc.calculate("1 2 a b");
     }
+    */
     
     /* 
     Conflict with operators implementation. 
@@ -130,6 +134,7 @@ public class CalculatorTest {
 	Assert.assertEquals("5.5", calc.toString());
     }
     
+    /* test is not necessary anymore as error message is directed to the screen
     @Test
     public void whenDivNotEnoughNumbersWarningMessageIsShown(){
 	RuntimeException exception = null;
@@ -141,7 +146,9 @@ public class CalculatorTest {
 	Assert.assertNotNull(exception);
 	Assert.assertEquals("operator / (position: 4): insufficient parameters", exception.getMessage());
     }
+    */
     
+    /* test is not necessary anymore as error message is directed to the screen
     @Test
     public void whenAddingNotEnoughNumbersWarningMessageIsShown(){
 	RuntimeException exception = null;
@@ -153,7 +160,9 @@ public class CalculatorTest {
 	Assert.assertNotNull(exception);
 	Assert.assertEquals("operator + (position: 4): insufficient parameters", exception.getMessage());
     }
+    */
     
+    /* test is not necessary anymore as error message is directed to the screen
     @Test
     public void whenSubtractingNotEnoughNumbersWarningMessageIsShown(){
 	RuntimeException exception = null;
@@ -165,7 +174,9 @@ public class CalculatorTest {
 	Assert.assertNotNull(exception);
 	Assert.assertEquals("operator - (position: 4): insufficient parameters", exception.getMessage());
     }
+    */
     
+    /* test is not necessary anymore as error message is directed to the screen
     @Test
     public void whenMultiplyingNotEnoughNumbersWarningMessageIsShown(){
 	RuntimeException exception = null;
@@ -178,7 +189,9 @@ public class CalculatorTest {
 	//operator <operator> (position: <pos>): insufficient parameters
 	Assert.assertEquals("operator * (position: 4): insufficient parameters", exception.getMessage());
     }
+    */
     
+    /* test is not necessary anymore as error message is directed to the screen
     @Test
     public void whenSqrtNotEnoughNumbersWarningMessageIsShown(){
 	RuntimeException exception = null;
@@ -190,8 +203,10 @@ public class CalculatorTest {
 	Assert.assertNotNull(exception);
 	//operator <operator> (position: <pos>): insufficient parameters
 	Assert.assertEquals("operator sqrt (position: 1): insufficient parameters", exception.getMessage());
-    } 
+    }
+    */ 
     
+    /* test is not necessary anymore as error message is directed to the screen
     @Test
     public void whenNotEnoughNumbersWarningMessageIsShown(){
 	RuntimeException exception = null;
@@ -203,6 +218,6 @@ public class CalculatorTest {
 	Assert.assertNotNull(exception);
 	//operator <operator> (position: <pos>): insufficient parameters
 	Assert.assertEquals("operator * (position: 15): insufficient parameters", exception.getMessage());
-    }
+    }*/
     
 }
