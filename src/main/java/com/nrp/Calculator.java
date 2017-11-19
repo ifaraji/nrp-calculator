@@ -2,6 +2,7 @@ package com.nrp;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Stack;
 
 public class Calculator {
@@ -22,5 +23,16 @@ public class Calculator {
 		Double number = Double.parseDouble(token);
 		stack.push(number);
 	    }
+    }
+    
+    @Override
+    public String toString(){
+	StringBuilder builder = new StringBuilder();
+	Iterator<Double> iterator = stack.iterator();
+	while(iterator.hasNext()){
+	    builder.append(iterator.next());
+	    builder.append(" ");
+	}
+	return builder.toString().trim();
     }
 }
