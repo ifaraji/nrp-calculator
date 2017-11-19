@@ -11,6 +11,10 @@ public class Calculator {
     
     private final String CLEAR = "clear";
     private final String SQRT = "sqrt";
+    private final String PLUS = "+";
+    private final String MINUS = "-";
+    private final String MUL = "*";
+    private final String DIV = "/";
     
     public Calculator(){
 	operators = new HashMap<String, String>();
@@ -29,11 +33,22 @@ public class Calculator {
 	    
 	    //clear operator
 	    if (token.equalsIgnoreCase(CLEAR))
-		clearStack();
-	    
+		clearStack(); 
 	    //sqrt operator
-	    if (token.equalsIgnoreCase(SQRT))
+	    else if (token.equalsIgnoreCase(SQRT))
 		sqrt();
+	    //plus operator
+	    else if (token.equalsIgnoreCase(PLUS))
+		add();
+	    //plus operator
+	    else if (token.equalsIgnoreCase(MINUS))
+		subtract();
+	    //plus operator
+	    else if (token.equalsIgnoreCase(MUL))
+		mul();
+	    //plus operator
+	    else if (token.equalsIgnoreCase(DIV))
+		div();
 	}
     }
     
@@ -44,6 +59,30 @@ public class Calculator {
     private void sqrt() {
 	Double d = stack.pop();
 	stack.push(Math.sqrt(d));
+    }
+    
+    private void add(){
+	Double d1 = stack.pop();
+	Double d2 = stack.pop();
+	stack.push(d2 + d1);	
+    }
+    
+    private void subtract(){
+	Double d1 = stack.pop();
+	Double d2 = stack.pop();
+	stack.push(d2 - d1);	
+    }
+    
+    private void mul(){
+	Double d1 = stack.pop();
+	Double d2 = stack.pop();
+	stack.push(d2 * d1);	
+    }
+    
+    private void div(){
+	Double d1 = stack.pop();
+	Double d2 = stack.pop();
+	stack.push(d2 / d1);	
     }
     
     @Override
