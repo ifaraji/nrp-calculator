@@ -119,13 +119,13 @@ public class CalculatorTest {
     }
     
     @Test
-    public void test(){
+    public void numbersToBeDisplayedToTenDecimalPoints(){
 	calc.calculate("10 3 /");
 	Assert.assertEquals("3.3333333333", calc.toString());
     }
     
     @Test
-    public void test2(){
+    public void numbersToBeDisplayedToTenDecimalPoints2(){
 	calc.calculate("11 2 /");
 	Assert.assertEquals("5.5", calc.toString());
     }
