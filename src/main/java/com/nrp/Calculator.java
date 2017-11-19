@@ -47,19 +47,19 @@ public class Calculator {
     	    	    clearStack(); 
     	    	//sqrt operator
     	    	else if (token.equalsIgnoreCase(SQRT))
-    	    	    sqrt();
+    	    	    sqrt(pos);
     	    	//plus operator
     	    	else if (token.equalsIgnoreCase(PLUS))
-    	    	    add();
+    	    	    add(pos);
     	    	//minus operator
     	    	else if (token.equalsIgnoreCase(MINUS))
-    	    	    subtract();
+    	    	    subtract(pos);
     	    	//multiplication operator
     	    	else if (token.equalsIgnoreCase(MUL))
-    	    	    mul();
+    	    	    mul(pos);
     	    	//division operator
     	    	else if (token.equalsIgnoreCase(DIV))
-    	    	    div();
+    	    	    div(pos);
     	    	//undo operator
     	    	else if (token.equalsIgnoreCase(UNDO))
     	    	    undo();
@@ -80,7 +80,7 @@ public class Calculator {
 	undoStack.push(Double.valueOf(i));
     }
     
-    private void sqrt() {
+    private void sqrt(int pos) {
 	if (stack.size() < 1)
 	    throw new RuntimeException("");
 	Double d = stack.pop();
@@ -88,7 +88,7 @@ public class Calculator {
 	undoStack.push(d);
     }
     
-    private void add(){
+    private void add(int pos){
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
 	stack.push(d2 + d1);
@@ -96,7 +96,7 @@ public class Calculator {
 	undoStack.push(d2);
     }
     
-    private void subtract(){
+    private void subtract(int pos){
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
 	stack.push(d2 - d1);	
@@ -104,7 +104,7 @@ public class Calculator {
 	undoStack.push(d2);
     }
     
-    private void mul(){
+    private void mul(int pos){
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
 	stack.push(d2 * d1);	
@@ -112,7 +112,7 @@ public class Calculator {
 	undoStack.push(d2);
     }
     
-    private void div(){
+    private void div(int pos){
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
 	stack.push(d2 / d1);	
@@ -121,6 +121,8 @@ public class Calculator {
     }
     
     private void undo(){
+	if (opStack.size() == 0) //nothing to undo
+	    return;
 	String lastOperator = opStack.pop();
 	if (lastOperator.equalsIgnoreCase(SQRT)){
 	    stack.pop();
