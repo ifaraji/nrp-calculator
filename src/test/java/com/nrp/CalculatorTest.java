@@ -100,4 +100,14 @@ public class CalculatorTest {
 	calc.calculate("undo");
 	Assert.assertEquals("20 5", calc.toString());
     }
+    
+    @Test
+    public void undoOperatorAfterClear2(){
+	calc.calculate("20 5 / sqrt clear");
+	calc.calculate("undo");
+	Assert.assertEquals("2", calc.toString());
+	calc.calculate("5 7 clear");
+	calc.calculate("undo");
+	Assert.assertEquals("2 5 7", calc.toString());
+    }
 }
