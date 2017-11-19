@@ -55,4 +55,28 @@ public class CalculatorTest {
 	calc.calculate("9 16 sqrt");
 	Assert.assertEquals("9 4", calc.toString());
     }
+    
+    @Test
+    public void plusOperator(){
+	calc.calculate("10 26 +");
+	Assert.assertEquals("36", calc.toString());
+    }
+    
+    @Test
+    public void minusOperator(){
+	calc.calculate("15 5 -");
+	Assert.assertEquals("10", calc.toString());
+    }
+    
+    @Test
+    public void multiplicationOperator(){
+	calc.calculate("8 9 *");
+	Assert.assertEquals("72", calc.toString());
+    }
+    
+    @Test
+    public void divisionOperator(){
+	calc.calculate("20 5 /");
+	Assert.assertEquals("4", calc.toString());
+    }
 }
