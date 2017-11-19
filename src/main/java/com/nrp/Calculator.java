@@ -16,6 +16,7 @@ public class Calculator {
     private final String MINUS = "-";
     private final String MUL = "*";
     private final String DIV = "/";
+    private final String UNDO = "undo";
     
     public Calculator(){
 	operators = new HashMap<String, String>();
@@ -42,15 +43,18 @@ public class Calculator {
 	    //plus operator
 	    else if (token.equalsIgnoreCase(PLUS))
 		add();
-	    //plus operator
+	    //minus operator
 	    else if (token.equalsIgnoreCase(MINUS))
 		subtract();
-	    //plus operator
+	    //multiplication operator
 	    else if (token.equalsIgnoreCase(MUL))
 		mul();
-	    //plus operator
+	    //division operator
 	    else if (token.equalsIgnoreCase(DIV))
 		div();
+	    //undo operator
+	    else if (token.equalsIgnoreCase(UNDO))
+		undo();
 	}
     }
     
@@ -70,32 +74,38 @@ public class Calculator {
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
 	stack.push(d2 + d1);
-	undoStack.push(d2);
 	undoStack.push(d1);
+	undoStack.push(d2);
     }
     
     private void subtract(){
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
 	stack.push(d2 - d1);	
-	undoStack.push(d2);
 	undoStack.push(d1);
+	undoStack.push(d2);
     }
     
     private void mul(){
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
 	stack.push(d2 * d1);	
-	undoStack.push(d2);
 	undoStack.push(d1);
+	undoStack.push(d2);
     }
     
     private void div(){
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
 	stack.push(d2 / d1);	
-	undoStack.push(d2);
 	undoStack.push(d1);
+	undoStack.push(d2);
+    }
+    
+    private void undo(){
+	stack.pop();
+	stack.push(undoStack.pop());
+	stack.push(undoStack.pop());
     }
     
     @Override
