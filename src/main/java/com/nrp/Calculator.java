@@ -18,7 +18,7 @@ public class Calculator {
 	stack = new Stack<Double>();
     }
 	
-    public void readInput(String input){
+    public void calculate(String input){
 	String[] tokens = input.split(" ");
 	for (String token : tokens) {
 	    if (!operators.containsKey(token)){

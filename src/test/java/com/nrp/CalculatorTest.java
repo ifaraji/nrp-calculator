@@ -15,30 +15,30 @@ public class CalculatorTest {
     
     @Test(expected = RuntimeException.class)
     public void whenNonNumberIsUsedThenThrowException(){
-	calc.readInput("a");
+	calc.calculate("a");
     }
     
     @Test(expected = RuntimeException.class)
     public void whenNonNumbersAreUsedThenThrowException(){
-	calc.readInput("1 2 a b");
+	calc.calculate("1 2 a b");
     }
     
     @Test
     public void whenValidOperatorsAreUsedThrowNoException(){
-	calc.readInput("+ - * / sqrt undo clear");
+	calc.calculate("+ - * / sqrt undo clear");
 	Assert.assertTrue(true);
     }
     
     @Test
     public void numbersAreStoredInStack(){
-	calc.readInput("1.5 2.1 3.2");
+	calc.calculate("1.5 2.1 3.2");
 	Assert.assertEquals("1.5 2.1 3.2", calc.toString());
     }
     
     @Test
     public void clearOperatorRemovesAllItemsFromStack(){
-	calc.readInput("1.5 2.1 3.2");
-	calc.readInput("clear");
+	calc.calculate("1.5 2.1 3.2");
+	calc.calculate("clear");
 	Assert.assertEquals("", calc.toString());
     }
 }
