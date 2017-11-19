@@ -31,6 +31,7 @@ public class Calculator {
 	
     public void calculate(String input){
 	String[] tokens = input.split(" ");
+	int pos = 1; //keeps track of the position of items in the list
 	for (String token : tokens) {
 	    if (!operators.containsKey(token)){
 		Double number = Double.parseDouble(token);
@@ -63,6 +64,8 @@ public class Calculator {
     	    	else if (token.equalsIgnoreCase(UNDO))
     	    	    undo();
 	    }
+	    pos += token.length();
+	    pos++; //+1 to account for the spaces between tokens in the input string
 	}
     }
     
@@ -78,6 +81,8 @@ public class Calculator {
     }
     
     private void sqrt() {
+	if (stack.size() < 1)
+	    throw new RuntimeException("");
 	Double d = stack.pop();
 	stack.push(Math.sqrt(d));
 	undoStack.push(d);
