@@ -32,5 +32,6 @@ public class CalculatorTest {
     @Test
     public void numbersAreStoredInStack(){
 	calc.readInput("1 2 3");
+	Assert.assertEquals("1 2 3", calc.toString());
     }
 }
