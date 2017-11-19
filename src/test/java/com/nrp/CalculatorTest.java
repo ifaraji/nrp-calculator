@@ -41,4 +41,16 @@ public class CalculatorTest {
 	calc.calculate("clear");
 	Assert.assertEquals("", calc.toString());
     }
+    
+    @Test
+    public void sqrtOperator(){
+	calc.calculate("9 sqrt");
+	Assert.assertEquals("3", calc.toString());
+    }
+    
+    @Test
+    public void sqrtOperatorWorksOnTheTopItemOnly(){
+	calc.calculate("9 16 sqrt");
+	Assert.assertEquals("9 4", calc.toString());
+    }
 }
