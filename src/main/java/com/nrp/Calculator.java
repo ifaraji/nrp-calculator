@@ -10,7 +10,7 @@ import java.util.Stack;
 public class Calculator {
     private HashMap<String, String> operators;
     private Stack<Double> stack;
-    private Stack<Double> undoStack;
+    private Stack<Double> undoStack; //keeps the pre-operation numbers
     private Stack<String> opStack; //sequence of operations for undoing purpose
     
     private final String CLEAR = "clear";
