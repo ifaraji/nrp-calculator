@@ -10,6 +10,7 @@ public class Calculator {
     private Stack<Double> stack;
     
     private final String CLEAR = "clear";
+    private final String SQRT = "sqrt";
     
     public Calculator(){
 	operators = new HashMap<String, String>();
@@ -29,6 +30,10 @@ public class Calculator {
 	    //clear operator
 	    if (token.equalsIgnoreCase(CLEAR))
 		clearStack();
+	    
+	    //sqrt operator
+	    if (token.equalsIgnoreCase(SQRT))
+		sqrt();
 	}
     }
     
@@ -36,12 +41,23 @@ public class Calculator {
 	stack.removeAllElements();
     }
     
+    private void sqrt() {
+	Double d = stack.pop();
+	stack.push(Math.sqrt(d));
+    }
+    
     @Override
     public String toString(){
 	StringBuilder builder = new StringBuilder();
 	Iterator<Double> iterator = stack.iterator();
 	while(iterator.hasNext()){
-	    builder.append(iterator.next());
+	    String s = "";
+	    Double d = iterator.next();
+	    if (d % 1 == 0) //if d does not have any floating points
+		s = String.valueOf(d.intValue());
+	    else
+		s = String.valueOf(d);
+	    builder.append(s);
 	    builder.append(" ");
 	}
 	return builder.toString().trim();
