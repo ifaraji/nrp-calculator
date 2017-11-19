@@ -82,7 +82,7 @@ public class Calculator {
     
     private void sqrt(int pos) {
 	if (stack.size() < 1)
-	    throw new RuntimeException("");
+	    throw new RuntimeException(String.format("operator %s (position: %d): insufficient parameters", SQRT, pos ));
 	Double d = stack.pop();
 	stack.push(Math.sqrt(d));
 	undoStack.push(d);
@@ -113,6 +113,8 @@ public class Calculator {
     }
     
     private void div(int pos){
+	if (stack.size() < 2)
+	    throw new RuntimeException(String.format("operator %s (position: %d): insufficient parameters", DIV, pos ));
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
 	stack.push(d2 / d1);	
