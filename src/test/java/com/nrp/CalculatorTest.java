@@ -34,4 +34,12 @@ public class CalculatorTest {
 	calc.readInput("1.5 2.1 3.2");
 	Assert.assertEquals("1.5 2.1 3.2", calc.toString());
     }
+    
+    @Test
+    public void clearOperatorRemovesAllItemsFromStack(){
+	calc.readInput("1.5 2.1 3.2");
+	calc.readInput("clear");
+	Assert.assertEquals("", calc.toString());
+	
+    }
 }
