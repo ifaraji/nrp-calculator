@@ -1,5 +1,6 @@
 package com.nrp;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -139,8 +140,10 @@ public class Calculator {
 	    Double d = iterator.next();
 	    if (d % 1 == 0) //if d does not have any floating points
 		s = String.valueOf(d.intValue());
-	    else
-		s = String.valueOf(d);
+	    else {
+		DecimalFormat df2 = new DecimalFormat(".##########");
+		s = df2.format(d);
+	    }
 	    builder.append(s);
 	    builder.append(" ");
 	}
