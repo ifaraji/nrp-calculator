@@ -123,6 +123,13 @@ public class CalculatorTest {
     }
     
     @Test
+    public void undoOperationShouldWorkOnAddedNumbersAsWell(){
+	calc.calculate("5 4 2 3");
+	calc.calculate("undo undo *");
+	Assert.assertEquals("20", calc.toString());
+    }
+    
+    @Test
     public void numbersToBeDisplayedToTenDecimalPoints(){
 	calc.calculate("10 3 /");
 	Assert.assertEquals("3.3333333333", calc.toString());
