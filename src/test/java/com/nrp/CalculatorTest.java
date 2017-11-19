@@ -117,4 +117,16 @@ public class CalculatorTest {
 	calc.calculate("undo undo");
 	Assert.assertEquals("4", calc.toString());
     }
+    
+    @Test
+    public void test(){
+	calc.calculate("10 3 /");
+	Assert.assertEquals("3.3333333333", calc.toString());
+    }
+    
+    @Test
+    public void test2(){
+	calc.calculate("11 2 /");
+	Assert.assertEquals("5.5", calc.toString());
+    }
 }
