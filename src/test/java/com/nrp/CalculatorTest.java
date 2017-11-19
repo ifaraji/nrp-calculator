@@ -79,4 +79,11 @@ public class CalculatorTest {
 	calc.calculate("20 5 /");
 	Assert.assertEquals("4", calc.toString());
     }
+    
+    @Test
+    public void undoOperatorUndoesPreviousOperation(){
+	calc.calculate("20 5 /");
+	calc.calculate("undo");
+	Assert.assertEquals("20 5", calc.toString());
+    }
 }
