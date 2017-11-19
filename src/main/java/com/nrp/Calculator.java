@@ -7,7 +7,9 @@ import java.util.Stack;
 
 public class Calculator {
     private HashMap<String, String> operators;
-    private Stack<Double> stack; 
+    private Stack<Double> stack;
+    
+    private final String CLEAR = "clear";
     
     public Calculator(){
 	operators = new HashMap<String, String>();
@@ -18,11 +20,20 @@ public class Calculator {
 	
     public void readInput(String input){
 	String[] tokens = input.split(" ");
-	for (String token : tokens)
+	for (String token : tokens) {
 	    if (!operators.containsKey(token)){
 		Double number = Double.parseDouble(token);
 		stack.push(number);
 	    }
+	    
+	    //clear operator
+	    if (token.equalsIgnoreCase(CLEAR))
+		clearStack();
+	}
+    }
+    
+    private void clearStack(){
+	stack.removeAllElements();
     }
     
     @Override
