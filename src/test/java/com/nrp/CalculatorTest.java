@@ -20,4 +20,9 @@ public class CalculatorTest {
     public void whenNonNumbersAreUsedThenThrowException(){
 	calc.readInput("1 2 a b");
     }
+    
+    @Test
+    public void whenValidOperatorsAreUsedThrowNoException(){
+	calc.readInput("+ - * / sqrt undo clear");
+    }
 }
