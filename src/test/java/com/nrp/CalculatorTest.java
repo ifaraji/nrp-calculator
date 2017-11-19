@@ -129,4 +129,18 @@ public class CalculatorTest {
 	calc.calculate("11 2 /");
 	Assert.assertEquals("5.5", calc.toString());
     }
+    
+    @Test
+    public void whenNotEnoughNumbersWarningMessageIsShown(){
+	RuntimeException exception = null;
+	try {
+	    calc.calculate("11 /");
+	} catch (RuntimeException e) {
+	    exception = e;
+	}
+	Assert.assertNotNull(exception);
+	//operator <operator> (position: <pos>): insufficient parameters
+	Assert.assertEquals("operator / (position: 4): insufficient parameters", exception.getMessage());
+    }
+    
 }
