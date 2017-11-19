@@ -89,6 +89,8 @@ public class Calculator {
     }
     
     private void add(int pos){
+	if (stack.size() < 2)
+	    throw new RuntimeException(String.format("operator %s (position: %d): insufficient parameters", PLUS, pos ));	
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
 	stack.push(d2 + d1);
@@ -97,6 +99,8 @@ public class Calculator {
     }
     
     private void subtract(int pos){
+	if (stack.size() < 2)
+	    throw new RuntimeException(String.format("operator %s (position: %d): insufficient parameters", MINUS, pos ));
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
 	stack.push(d2 - d1);	
@@ -105,6 +109,8 @@ public class Calculator {
     }
     
     private void mul(int pos){
+	if (stack.size() < 2)
+	    throw new RuntimeException(String.format("operator %s (position: %d): insufficient parameters", MUL, pos ));
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
 	stack.push(d2 * d1);	
