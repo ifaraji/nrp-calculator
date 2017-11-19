@@ -9,6 +9,7 @@ public class Calculator {
     private HashMap<String, String> operators;
     private Stack<Double> stack;
     private Stack<Double> undoStack;
+    private Stack<String> opStack; //sequence of operations for undoing purpose
     
     private final String CLEAR = "clear";
     private final String SQRT = "sqrt";
@@ -24,6 +25,7 @@ public class Calculator {
 	    operators.put(op, op);
 	stack = new Stack<Double>();
 	undoStack = new Stack<Double>();
+	opStack = new Stack<String>();
     }
 	
     public void calculate(String input){
@@ -32,29 +34,34 @@ public class Calculator {
 	    if (!operators.containsKey(token)){
 		Double number = Double.parseDouble(token);
 		stack.push(number);
+	    } else {
+		//tracking operators for undoing purpose
+		//no need to track undo itself
+		if (!token.equalsIgnoreCase(UNDO))
+		    opStack.push(token);
+    	    	
+		//clear operator
+    	    	if (token.equalsIgnoreCase(CLEAR))
+    	    	    clearStack(); 
+    	    	//sqrt operator
+    	    	else if (token.equalsIgnoreCase(SQRT))
+    	    	    sqrt();
+    	    	//plus operator
+    	    	else if (token.equalsIgnoreCase(PLUS))
+    	    	    add();
+    	    	//minus operator
+    	    	else if (token.equalsIgnoreCase(MINUS))
+    	    	    subtract();
+    	    	//multiplication operator
+    	    	else if (token.equalsIgnoreCase(MUL))
+    	    	    mul();
+    	    	//division operator
+    	    	else if (token.equalsIgnoreCase(DIV))
+    	    	    div();
+    	    	//undo operator
+    	    	else if (token.equalsIgnoreCase(UNDO))
+    	    	    undo();
 	    }
-	    
-	    //clear operator
-	    if (token.equalsIgnoreCase(CLEAR))
-		clearStack(); 
-	    //sqrt operator
-	    else if (token.equalsIgnoreCase(SQRT))
-		sqrt();
-	    //plus operator
-	    else if (token.equalsIgnoreCase(PLUS))
-		add();
-	    //minus operator
-	    else if (token.equalsIgnoreCase(MINUS))
-		subtract();
-	    //multiplication operator
-	    else if (token.equalsIgnoreCase(MUL))
-		mul();
-	    //division operator
-	    else if (token.equalsIgnoreCase(DIV))
-		div();
-	    //undo operator
-	    else if (token.equalsIgnoreCase(UNDO))
-		undo();
 	}
     }
     
@@ -103,9 +110,17 @@ public class Calculator {
     }
     
     private void undo(){
-	stack.pop();
-	stack.push(undoStack.pop());
-	stack.push(undoStack.pop());
+	String lastOperator = opStack.pop();
+	if (lastOperator.equalsIgnoreCase(SQRT)){
+	    stack.pop();
+	    stack.push(undoStack.pop());
+	} else if (lastOperator.equalsIgnoreCase(CLEAR)) {
+	    
+	} else {
+	    stack.pop();
+	    stack.push(undoStack.pop());
+	    stack.push(undoStack.pop());	    
+	}
     }
     
     @Override
