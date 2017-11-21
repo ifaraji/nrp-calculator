@@ -7,6 +7,7 @@ import org.junit.Assert;
 
 public class BasicCalculatorTest {
     BasicCalculator calc;
+    private static final double DELTA = 1e-13;
     
     @Before
     public void init(){
@@ -27,13 +28,13 @@ public class BasicCalculatorTest {
     
     @Test
     public void multiplyTwoNumbers(){
-	double d = calc.subtract(10.5, 15.6);
-	Assert.assertTrue(163.8 == d);
+	double d = calc.multiply(10.5, 15.6);
+	Assert.assertEquals(163.8, d, DELTA);
     }
     
     @Test
     public void divideTwoNumbers(){
-	double d = calc.subtract(26.445, 12.3);
-	Assert.assertTrue(2.15 == d);
+	double d = calc.divide(26.445, 12.3);
+	Assert.assertEquals(2.15, d, DELTA);
     }
 }
