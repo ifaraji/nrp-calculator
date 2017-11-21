@@ -31,20 +31,20 @@ public class StackOpsDelegateTest {
 	stack1.push("c");
 	stack1.push("d");
 	stack1.push("e");
-	delegate.copyTo(stack1, stack2);
+	delegate.reverseCopy(stack1, stack2);
 	Assert.assertEquals(stack1.size(), stack2.size());
     }
     
     @Test
-    public void whenStack1IsCopiedToStack2OrderIsMaintained(){
+    public void whenStack1IsCopiedToStack2OrderIsReversed(){
 	Stack<String> stack1 = new Stack<String>();
 	Stack<String> stack2 = new Stack<String>();
 	stack1.push("a");
 	stack1.push("b");
 	stack1.push("c");
-	delegate.copyTo(stack1, stack2);
-	Assert.assertEquals(stack1.pop(), stack2.pop());
-	Assert.assertEquals(stack1.pop(), stack2.pop());
-	Assert.assertEquals(stack1.pop(), stack2.pop());
+	delegate.reverseCopy(stack1, stack2);
+	Assert.assertEquals(stack1.get(2), stack2.get(0));
+	Assert.assertEquals(stack1.get(1), stack2.get(1));
+	Assert.assertEquals(stack1.get(0), stack2.get(2));
     }
 }
