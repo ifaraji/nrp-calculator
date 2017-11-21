@@ -141,90 +141,47 @@ public class NRPCalculatorTest {
 	Assert.assertEquals("5.5", calc.toString());
     }
     
-    /* test is not necessary anymore as error message is directed to the screen
     @Test
     public void whenDivNotEnoughNumbersWarningMessageIsShown(){
-	RuntimeException exception = null;
-	try {
-	    calc.calculate("11 /");
-	} catch (RuntimeException e) {
-	    exception = e;
-	}
-	Assert.assertNotNull(exception);
-	Assert.assertEquals("operator / (position: 4): insufficient parameters", exception.getMessage());
+	String output = "";
+	output = calc.calculate("11 /");
+	Assert.assertEquals("operator / (position: 4): insufficient parameters", output);
     }
-    */
     
-    /* test is not necessary anymore as error message is directed to the screen
+    
     @Test
     public void whenAddingNotEnoughNumbersWarningMessageIsShown(){
-	RuntimeException exception = null;
-	try {
-	    calc.calculate("11 +");
-	} catch (RuntimeException e) {
-	    exception = e;
-	}
-	Assert.assertNotNull(exception);
-	Assert.assertEquals("operator + (position: 4): insufficient parameters", exception.getMessage());
+	String output = "";
+	output = calc.calculate("11 +");
+	Assert.assertEquals("operator + (position: 4): insufficient parameters", output);
     }
-    */
     
-    /* test is not necessary anymore as error message is directed to the screen
     @Test
     public void whenSubtractingNotEnoughNumbersWarningMessageIsShown(){
-	RuntimeException exception = null;
-	try {
-	    calc.calculate("11 -");
-	} catch (RuntimeException e) {
-	    exception = e;
-	}
-	Assert.assertNotNull(exception);
-	Assert.assertEquals("operator - (position: 4): insufficient parameters", exception.getMessage());
+	String output = "";
+	output = calc.calculate("11 -");
+	Assert.assertEquals("operator - (position: 4): insufficient parameters", output);
     }
-    */
     
-    /* test is not necessary anymore as error message is directed to the screen
     @Test
     public void whenMultiplyingNotEnoughNumbersWarningMessageIsShown(){
-	RuntimeException exception = null;
-	try {
-	    calc.calculate("11 *");
-	} catch (RuntimeException e) {
-	    exception = e;
-	}
-	Assert.assertNotNull(exception);
-	//operator <operator> (position: <pos>): insufficient parameters
-	Assert.assertEquals("operator * (position: 4): insufficient parameters", exception.getMessage());
+	String output = "";
+	output = calc.calculate("11 *");
+	Assert.assertEquals("operator * (position: 4): insufficient parameters", output);
     }
-    */
     
-    /* test is not necessary anymore as error message is directed to the screen
     @Test
     public void whenSqrtNotEnoughNumbersWarningMessageIsShown(){
-	RuntimeException exception = null;
-	try {
-	    calc.calculate("sqrt");
-	} catch (RuntimeException e) {
-	    exception = e;
-	}
-	Assert.assertNotNull(exception);
-	//operator <operator> (position: <pos>): insufficient parameters
-	Assert.assertEquals("operator sqrt (position: 1): insufficient parameters", exception.getMessage());
+	String output = "";
+	output = calc.calculate("sqrt");
+	Assert.assertEquals("operator sqrt (position: 1): insufficient parameters", output);
     }
-    */ 
     
-    /* test is not necessary anymore as error message is directed to the screen
     @Test
     public void whenNotEnoughNumbersWarningMessageIsShown(){
-	RuntimeException exception = null;
-	try {
-	    calc.calculate("1 2 3 * 5 + * * 6 5");
-	} catch (RuntimeException e) {
-	    exception = e;
-	}
-	Assert.assertNotNull(exception);
-	//operator <operator> (position: <pos>): insufficient parameters
-	Assert.assertEquals("operator * (position: 15): insufficient parameters", exception.getMessage());
-    }*/
+	String output = "";
+	output = calc.calculate("1 2 3 * 5 + * * 6 5");
+	Assert.assertEquals("operator * (position: 15): insufficient parameters", output);
+    }
     
 }

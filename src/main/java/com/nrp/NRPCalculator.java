@@ -17,7 +17,7 @@ public class NRPCalculator extends BasicCalculator{
     private Stack<Double> undoStack; //keeps the pre-operation numbers
     private Stack<String> opStack; //sequence of operations for undoing purpose
     
-    private StackOpsDelegate<Double> stackDelegate;
+    private StackOpsDelegate<Double> stackDelegate; //we delegate some of our stack ops to the delegate
     
     private final String CLEAR = "clear";
     private final String SQRT = "sqrt";
@@ -38,7 +38,7 @@ public class NRPCalculator extends BasicCalculator{
 	stackDelegate = new StackOpsDelegate<Double>();
     }
 	
-    public void calculate(String input){
+    public String calculate(String input){
 	String[] tokens = input.split(" ");
 	int pos = 1; //keeps track of the position of items in the list
 	try {
@@ -79,9 +79,10 @@ public class NRPCalculator extends BasicCalculator{
 	    pos++; //+1 to account for the spaces between tokens in the input string
 	}
 	} catch (RuntimeException e) {
-	    System.out.println(e.getMessage());
+	    return e.getMessage();
 	}
-	System.out.println("Stack: " + this);
+	return "";
+	//System.out.println("Stack: " + this);
     }
     
     private void clearStack(){
