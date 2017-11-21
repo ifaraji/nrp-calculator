@@ -5,12 +5,12 @@ import org.junit.Test;
 
 import org.junit.Assert;
 
-public class CalculatorTest {
-    Calculator calc;
+public class NRPCalculatorTest {
+    NRPCalculator calc;
     
     @Before
     public void init(){
-	calc = new Calculator();
+	calc = new NRPCalculator();
     }
     
     /* test is not necessary anymore as error message is directed to the screen

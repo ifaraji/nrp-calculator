@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class Calculator {
+public class NRPCalculator extends BasicCalculator{
     private HashMap<String, String> operators;
     private Stack<Double> stack;
     private Stack<Double> undoStack; //keeps the pre-operation numbers
@@ -22,7 +22,7 @@ public class Calculator {
     private final String UNDO = "undo";
     private final String NUM = "NUMBER"; //control key for undoing added numbers
     
-    public Calculator(){
+    public NRPCalculator(){
 	operators = new HashMap<String, String>();
 	for (String op : Arrays.asList("+", "-", "*", "/", "sqrt", "undo", "clear"))
 	    operators.put(op, op);
@@ -177,7 +177,7 @@ public class Calculator {
     
     public static void main(String[] args) {
 	Scanner sc = new Scanner(System.in);
-	Calculator calculator = new Calculator();
+	NRPCalculator calculator = new NRPCalculator();
 	while (true) {
 	    System.out.print("Enter command (type exit to end): ");
 	    String cmd = sc.nextLine();
