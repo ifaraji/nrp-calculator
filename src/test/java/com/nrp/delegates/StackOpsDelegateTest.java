@@ -34,4 +34,17 @@ public class StackOpsDelegateTest {
 	delegate.copyTo(stack1, stack2);
 	Assert.assertEquals(stack1.size(), stack2.size());
     }
+    
+    @Test
+    public void whenStack1IsCopiedToStack2OrderIsMaintained(){
+	Stack<String> stack1 = new Stack<String>();
+	Stack<String> stack2 = new Stack<String>();
+	stack1.push("a");
+	stack1.push("b");
+	stack1.push("c");
+	delegate.copyTo(stack1, stack2);
+	Assert.assertEquals(stack1.pop(), stack2.pop());
+	Assert.assertEquals(stack1.pop(), stack2.pop());
+	Assert.assertEquals(stack1.pop(), stack2.pop());
+    }
 }
