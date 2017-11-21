@@ -7,11 +7,17 @@ import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Stack;
 
+
+import com.nrp.delegates.StackOpsDelegate;
+
 public class NRPCalculator extends BasicCalculator{
     private HashMap<String, String> operators;
+    
     private Stack<Double> stack;
     private Stack<Double> undoStack; //keeps the pre-operation numbers
     private Stack<String> opStack; //sequence of operations for undoing purpose
+    
+    private StackOpsDelegate<Double> stackDelegate;
     
     private final String CLEAR = "clear";
     private final String SQRT = "sqrt";
@@ -29,6 +35,7 @@ public class NRPCalculator extends BasicCalculator{
 	stack = new Stack<Double>();
 	undoStack = new Stack<Double>();
 	opStack = new Stack<String>();
+	stackDelegate = new StackOpsDelegate<Double>();
     }
 	
     public void calculate(String input){
@@ -78,14 +85,10 @@ public class NRPCalculator extends BasicCalculator{
     }
     
     private void clearStack(){
-	//stack.removeAllElements(); 
-	int i = 0; 
-	while(!stack.isEmpty()){
-	    i++;
-	    undoStack.push(stack.pop());
-	}
-	//we need to know how many items were removed by this clear operation
-	undoStack.push(Double.valueOf(i));
+	int i = stack.size();
+	stack.push(Double.valueOf(i)); //we need to know how many items are removed by this clear operation 
+	stackDelegate.reverseCopy(stack, undoStack);
+	stack.removeAllElements(); 
     }
     
     private void sqrt(int pos) {
