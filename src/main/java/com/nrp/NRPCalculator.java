@@ -105,8 +105,7 @@ public class NRPCalculator extends BasicCalculator{
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
 	stack.push(add(d2, d1));
-	undoStack.push(d1);
-	undoStack.push(d2);
+	stackDelegate.pushMultiple(undoStack, new Double[]{d1, d2});
     }
     
     private void subtract(int pos){
@@ -115,8 +114,7 @@ public class NRPCalculator extends BasicCalculator{
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
 	stack.push(subtract(d2, d1));	
-	undoStack.push(d1);
-	undoStack.push(d2);
+	stackDelegate.pushMultiple(undoStack, new Double[]{d1, d2});
     }
     
     private void multiply(int pos){
@@ -125,8 +123,7 @@ public class NRPCalculator extends BasicCalculator{
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
 	stack.push(multiply(d2, d1));	
-	undoStack.push(d1);
-	undoStack.push(d2);
+	stackDelegate.pushMultiple(undoStack, new Double[]{d1, d2});
     }
     
     private void divide(int pos){
@@ -135,8 +132,7 @@ public class NRPCalculator extends BasicCalculator{
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
 	stack.push(divide(d2, d1));	
-	undoStack.push(d1);
-	undoStack.push(d2);
+	stackDelegate.pushMultiple(undoStack, new Double[]{d1, d2});
     }
     
     private void undo(){
