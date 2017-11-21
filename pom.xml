@@ -19,7 +19,7 @@
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>1.2.1</version>
 				<configuration>
-					<mainClass>com.nrp.Calculator</mainClass>
+					<mainClass>com.nrp.client.ClientApp</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
