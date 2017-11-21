@@ -60,10 +60,10 @@ public class NRPCalculator extends BasicCalculator{
     	    	    subtract(pos);
     	    	//multiplication operator
     	    	else if (token.equalsIgnoreCase(MUL))
-    	    	    mul(pos);
+    	    	    multiply(pos);
     	    	//division operator
     	    	else if (token.equalsIgnoreCase(DIV))
-    	    	    div(pos);
+    	    	    divide(pos);
     	    	//undo operator
     	    	else if (token.equalsIgnoreCase(UNDO))
     	    	    undo();
@@ -101,7 +101,7 @@ public class NRPCalculator extends BasicCalculator{
 	    throw new RuntimeException(String.format("operator %s (position: %d): insufficient parameters", PLUS, pos ));	
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
-	stack.push(d2 + d1);
+	stack.push(add(d2, d1));
 	undoStack.push(d1);
 	undoStack.push(d2);
     }
@@ -111,27 +111,27 @@ public class NRPCalculator extends BasicCalculator{
 	    throw new RuntimeException(String.format("operator %s (position: %d): insufficient parameters", MINUS, pos ));
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
-	stack.push(d2 - d1);	
+	stack.push(subtract(d2, d1));	
 	undoStack.push(d1);
 	undoStack.push(d2);
     }
     
-    private void mul(int pos){
+    private void multiply(int pos){
 	if (stack.size() < 2)
 	    throw new RuntimeException(String.format("operator %s (position: %d): insufficient parameters", MUL, pos ));
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
-	stack.push(d2 * d1);	
+	stack.push(multiply(d2, d1));	
 	undoStack.push(d1);
 	undoStack.push(d2);
     }
     
-    private void div(int pos){
+    private void divide(int pos){
 	if (stack.size() < 2)
 	    throw new RuntimeException(String.format("operator %s (position: %d): insufficient parameters", DIV, pos ));
 	Double d1 = stack.pop();
 	Double d2 = stack.pop();
-	stack.push(d2 / d1);	
+	stack.push(divide(d2, d1));	
 	undoStack.push(d1);
 	undoStack.push(d2);
     }
