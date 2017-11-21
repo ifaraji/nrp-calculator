@@ -22,4 +22,16 @@ public class StackOpsDelegateTest {
 	Assert.assertEquals(5, stack.size());
     }
 
+    @Test
+    public void copyStack1ToStack2(){
+	Stack<String> stack1 = new Stack<String>();
+	Stack<String> stack2 = new Stack<String>();
+	stack1.push("a");
+	stack1.push("b");
+	stack1.push("c");
+	stack1.push("d");
+	stack1.push("e");
+	delegate.copyTo(stack1, stack2);
+	Assert.assertEquals(stack1.size(), stack2.size());
+    }
 }
