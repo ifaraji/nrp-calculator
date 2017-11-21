@@ -85,9 +85,9 @@ public class NRPCalculator extends BasicCalculator{
     }
     
     private void clearStack(){
-	int i = stack.size();
-	stack.push(Double.valueOf(i)); //we need to know how many items are removed by this clear operation 
+	int i = stack.size();	
 	stackDelegate.reverseCopy(stack, undoStack);
+	undoStack.push(Double.valueOf(i)); //we need to know how many items are removed by this clear operation 
 	stack.removeAllElements(); 
     }
     
