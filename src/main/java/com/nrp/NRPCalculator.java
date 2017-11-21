@@ -2,7 +2,6 @@ package com.nrp;
 
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Scanner;
 import java.util.Stack;
 
 
@@ -158,18 +157,5 @@ public class NRPCalculator extends BasicCalculator{
     public String toString(){
 	return stackDelegate.doubleStackToString(stack, 10);
     }
-    
-    public static void main(String[] args) {
-	Scanner sc = new Scanner(System.in);
-	NRPCalculator calculator = new NRPCalculator();
-	while (true) {
-	    System.out.print("Enter command (type exit to end): ");
-	    String cmd = sc.nextLine();
-	    if (cmd.equalsIgnoreCase("exit"))
-		break;
-	    else
-		calculator.calculate(cmd);
-	}
-	sc.close();
-    }
+
 }
